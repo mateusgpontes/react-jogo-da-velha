@@ -1,7 +1,7 @@
 import React from 'react';
 import Square from './square';
-import CalculateWinner from './calcula';
 import { BoardWrapper, Quadrados, Text } from './stylesComponents/stylesC'
+import { CalculateWinner} from './logica/funções'
 
 class Board extends React.Component {
     constructor(props) {
