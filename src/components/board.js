@@ -1,7 +1,7 @@
 import React from 'react';
 import Square from './square';
-import { BoardWrapper, Quadrados, Text } from './stylesComponents/stylesC'
-import { CalculateWinner} from './logica/funções'
+import {CalculateWinner} from './logica/funções';
+import { BoardWrapper, Quadrados, Text } from './stylesComponents/stylesC'  
 
 class Board extends React.Component {
     constructor(props) {
@@ -11,7 +11,7 @@ class Board extends React.Component {
             zIsNext: true,
         };
     }
-
+    
     handleClick(i) {
         const squares = this.state.squares.slice();
         if(CalculateWinner(squares) || squares[i]){
@@ -24,16 +24,16 @@ class Board extends React.Component {
         });
     }
 
-    renderSquare(i){
-        return (<Square 
-                    value={this.state.squares[i]}
-                    onClick={() => this.handleClick(i)}
-                />
+    renderSquare(i) {
+        return (
+          <Square
+            value={this.state.squares[i]}
+            onClick={() => this.handleClick(i)}
+          />
         );
     }
 
-    render() {
-        
+    render() {    
         const winner = CalculateWinner(this.state.squares);
         let status;
         if(winner){
