@@ -1,20 +1,29 @@
 import Styles from 'styled-components';
 
 export const BoardWrapper = Styles.div`
-    height: 100%;
-    display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    display: flex;
+`
+
+export const Text =  Styles.div`
+    width: 200px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: ${props => props.padding};
+    font-family: ${props => props.fontFamily};
 `
 
 export const Quadrados = Styles.div`
-    font-family: Arial;
     align-items: center;
+    font-family: ${props => props.fontFamily};
 `;
 
 export const Button = Styles.button`
-    border: 3px solid black;
+    vertical-align: bottom;
     height: 100px;
     width: 100px;
-    vertical-align: bottom;
+    border: ${props => props.border};
 `;

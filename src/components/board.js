@@ -1,6 +1,7 @@
 import React from 'react';
 import Square from './square';
-import { Quadrados, BoardWrapper } from './stylesComponents/stylesC'
+import CalculateWinner from './calcula';
+import { BoardWrapper, Quadrados, Text } from './stylesComponents/stylesC'
 
 class Board extends React.Component {
     constructor(props) {
@@ -13,6 +14,9 @@ class Board extends React.Component {
 
     handleClick(i) {
         const squares = this.state.squares.slice();
+        if(CalculateWinner(squares) || squares[i]){
+            return;
+        }
         squares[i] = this.state.xIsNext ? 'X' : 'O';
         this.setState({
             squares: squares,
@@ -29,9 +33,21 @@ class Board extends React.Component {
     }
 
     render() {
+        
+        const winner = CalculateWinner(this.state.squares);
+        let status;
+        if(winner){
+            status = 'Winner: ' + winner;
+        }else{
+            status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
+        }
+
         return (
             <BoardWrapper>
-                <Quadrados>
+                <Text fontFamily = "Lato, sans-serif" padding = "40px">
+                    {status}
+                </Text>
+                <Quadrados fontFamily = "Arial">
                     <Quadrados>
                         {this.renderSquare(0)}
                         {this.renderSquare(1)}
